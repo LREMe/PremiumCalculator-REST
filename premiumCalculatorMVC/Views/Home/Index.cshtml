@@ -1,0 +1,113 @@
+﻿@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+
+    @using (Html.BeginForm("Register", "Home", FormMethod.Post, new { @id = "myFormId", @class = "form-horizontal", role = "form", @novalidate = "" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="main">
+            <section>
+                <div class="fila">
+                    <div class="label">
+                        &nbsp;@Html.LabelFor(model => model.DateOfBirth)
+                    </div>
+                    <div  class="control">
+                        @Html.TextBoxFor( model => model.DateOfBirth,  "{0:MM/dd/yyyy}" , new { id = "txtDoB" , autocomplete="off",   @class="{validate:{required:true, dateISO: true,AccurateDate: true}}" })
+                    </div>
+                </div>
+
+                <div class="filaM">
+                    <div class="message">
+                    &nbsp;
+                    @Html.ValidationMessageFor(model => model.DateOfBirth, "", new { @class = "text-danger"  , id="DateOfBirthMsg" })
+                    </div>
+                </div>
+
+
+
+                <div class="fila">
+
+                    <div class="label">
+                        &nbsp;@Html.LabelFor(model => model.SelectedState)
+                    </div>
+                    <div class="control">
+                        @Html.DropDownListFor(m=> m.SelectedState, Model.States, "", new  { @class = "form-control",   data_placeholder ="Type or Select", required = "required"   }  )
+                    </div>
+
+                    <div class="labelP">
+                        &nbsp; @Html.LabelFor(model => model.SelectedPlan)
+                    </div>
+                    <div class="control">
+                        @Html.DropDownListFor(m=> m.SelectedPlan, Model.Plans, "", new  { @class = "form-control",  data_placeholder ="Type or Select" } )
+                    </div>
+                </div>
+
+
+                <div class="filaM">
+                    <div class="message">
+                        &nbsp;
+                        @Html.ValidationMessageFor(model => model.SelectedState, "", new { @class = "text-danger" , id="SelectedStateMsg" })
+                    </div>
+                    <div class="message">
+                        @Html.ValidationMessageFor(model => model.SelectedPlan, "", new { @class = "text-danger"  , id="SelectedPlanMsg" })
+                    </div>
+
+                </div>
+
+
+
+                <div class="fila">
+                    <div class="label">
+                        &nbsp;@Html.LabelFor(model => model.Age)
+                    </div>
+                    <div class="control">
+                        @Html.TextBoxFor(m => m.Age,new {@class="disabled", @readonly=true })
+                        @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+            </section>
+            <section class="results">
+
+                <div class="premium">
+
+                    <div class="filter">
+                        <div>&nbsp;</div>
+                        <div>
+                            <input type="button" value="Get Premium" onclick="javascript:getPremium('@ViewBag.BaseAddress');" class="buttonPremium" />
+
+                        </div>
+                        <div>
+                            &nbsp;
+                        </div>
+                        <div class="period">
+                            <div class="periodLabel">
+                                &nbsp;@Html.LabelFor(model => model.SelectedPeriod)
+                            </div>
+                            <div class="periodControl">
+                                @Html.DropDownListFor(m=> m.SelectedPeriod, Model.Periods, "", new  { @class = "form-control",  data_placeholder ="Select" , onchange = "javascript:periodChange(this);" } )
+                            </div>
+                        </div>
+                    </div>
+                    <div class="data">
+
+                        <table id="list" class="scroll">
+                        </table>
+                        <div id="pager" style="text-align: center;">
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    }
+
+</div>

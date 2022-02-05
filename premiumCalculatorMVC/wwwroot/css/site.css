@@ -1,0 +1,110 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+input[type=text] {
+    text-align: right
+}
+
+
+.main {
+    border: 1px outset black;
+    text-align: center;
+    width:700px;
+}
+
+
+.fila {
+    /*border: 1px outset black;*/
+    /* vertical-align:central;*/
+    display: flex;
+}
+
+.filaM {
+    /*border: 1px outset black;*/
+    /* vertical-align:central;*/
+    display: flex;
+    height:20px;
+}
+
+.label {
+    text-align: left;
+    padding: 10px;
+    width: 150px;
+}
+.labelP {
+    text-align: left;
+    padding: 10px;
+    width: 90px;
+}
+
+.control {
+    padding: 10px;
+    width: 150px;
+    display: flex;
+}
+
+.message {
+    width: 300px;
+}
+
+.premium {
+    display: flex;
+    width: 250px;
+    padding-right: 30px;
+    /*border: 1px outset black;*/
+}
+
+
+.period {
+    display: flex;
+
+
+}
+
+.periodLabel {
+    text-align: left;
+    padding: 10px;
+    width: 75px;
+}
+
+.periodControl {
+    width: 150px;
+    padding: 10px;
+}
+
+.results {
+    border: 1px outset black;
+}
+
+.filter {
+
+}
+
+.buttonPremium {
+    width:200px;
+}
+
+input {
+    height:25px;
+    width:90px;
+}
+
+message {
+    height:20px;
+}
